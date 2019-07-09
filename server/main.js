@@ -13,10 +13,20 @@ server.use(bp.json())
 
 //NOTE Everything above this line always stays the same
 
+//NOTE next we want to register all our routes(doorways that can be accessed in our app)
 
+//NOTE we have to import access to our controllers
+import CatsController from './controllers/CatsController'
+
+//NOTE remember the forward slash at the start of your path!
+server.use('/api/cats', new CatsController().router)
 
 
 
 //NOTE Everything below this line always stays the same
+
+server.use('*', (req, res, next) => {
+  res.status(404).send("Route not found")
+})
 
 server.listen(port, () => { console.log(`Your server is running on port: ${port}, you better go catch it!`) })
