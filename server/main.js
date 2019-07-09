@@ -17,9 +17,11 @@ server.use(bp.json())
 
 //NOTE we have to import access to our controllers
 import CatsController from './controllers/CatsController'
+import DogsController from './controllers/DogsController'
 
 //NOTE remember the forward slash at the start of your path!
 server.use('/api/cats', new CatsController().router)
+server.use('/api/dogs', new DogsController().router)
 
 
 
